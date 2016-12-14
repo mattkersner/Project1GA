@@ -1,0 +1,70 @@
+.gameboard {
+  height: 500px;
+  width: 700px;
+  background-image: url("images/background.jpg");
+  position: relative;
+  margin: 0 auto;
+  top: 5px;
+}
+@font-face {
+  font-family: southpark;
+  src: url("southpark.ttf");
+}
+h1 {
+  text-align: center;
+  font-family: southpark;
+}
+h2 {
+  text-align: center;
+  font-family: southpark;
+}
+.score {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.item {
+  height: 90px;
+  width: 50px;
+  background-image: url("images/cheesypoofs.jpg");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  animation: fall 5s infinite;
+  transition: all linear;
+  left: 50px;
+}
+.item2 {
+  height: 90px;
+  width: 50px;
+  background-image: url("images/cheesypoofs.jpg");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  animation: fall 8s infinite;
+  transition: all linear;
+  right: 200px;
+}
+@keyframes fall {
+  0% {top: 0;}
+  5% {top: 20px;}
+  10% {top: 50px;}
+  25% {top: 100px;}
+  50% {top: 150px;}
+  75% {top: 200px;}
+  90% {top: 250px;}
+  100% {top: 350px;}
+}
+.catcher {
+  height: 80px;
+  width: 80px;
+  background-image: url("images/cartman.png");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.catcher .move {
+  right: 100px;
+}
