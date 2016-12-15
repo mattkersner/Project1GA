@@ -20,12 +20,12 @@ h2 {
 }
 .score {
   position: absolute;
-  top: 5px;
-  right: 18px;
+  top: 0;
+  right: 20px;
 }
 #counter {
   position: absolute;
-  top: 6px;
+  top: 22px;
   right: 5px;
 }
 .item {
@@ -70,4 +70,7 @@ h2 {
   right: 100px;
   background-color: white;
   border: 2px solid black;
+}
+.audio {
+  display: none;
 }

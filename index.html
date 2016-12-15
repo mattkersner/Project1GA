@@ -6,11 +6,16 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+<audio class="audio" id="yes-audio" controls preload="none">
+  <source src="cheesypoofs.mp3" type="audio/mp3">
+</audio>
+
 <h1>Yea, I want cheesy poofs!</h1>
 <h2>An Eric Cartman Adventure</h2>
 <div class="gameboard">
   <h3 class="score">Score:</h3>
-  <h3 id="counter"></h3>
+  <div id="counter">0</div>
   <div class="item" id="item"></div>
   <div class="catcher" id="catcher"></div>
   <div class="winMessage"></div>
@@ -20,5 +25,6 @@
 <script src="src/jquery-3.1.1.min.js"></script>
 <script src="src/app.js"></script>
 <script src= "src/item.js"></script>
+<script src= "src/game.js"></script>
 </body>
 </html>

@@ -33,7 +33,9 @@
 //   }
 // }
 
-
+$(window).ready( function() {
+  $('#yes-audio').trigger('play');
+})
 // .catcher top is always at 410
 
 // set gameboard to a variable
