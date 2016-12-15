@@ -15,24 +15,6 @@
 //   }
 // });
 
-// class Catcher {
-//   constructor(x, y) {
-//     this.x = x;
-//     this.y = y;
-//     this.cartman = new Image;
-//     this.cartman.src = 'images/cartman.png';
-//   }
-//   move() {
-//     $('.catcher').addEventListener('keydown', function(e) {
-//          if (e.keycode === 37) {
-//             this.x -= 30px;
-//          } else if (e.keycode === 39) {
-//             this.x += 30px;
-//          }
-//     });
-//   }
-// }
-
 $(window).ready( function() {
   $('#yes-audio').trigger('play');
 })

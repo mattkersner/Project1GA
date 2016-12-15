@@ -21,7 +21,7 @@ h2 {
 .score {
   position: absolute;
   top: 0;
-  right: 20px;
+  right: 30px;
 }
 #counter {
   position: absolute;
@@ -35,18 +35,18 @@ h2 {
   background-size: cover;
   background-position: center;
   position: absolute;
-  animation: fall 5s infinite;
+  animation: fall 3s infinite;
   transition: all linear;
-  left: 49px;
+  left: 50px;
 }
 @keyframes fall {
   0% {top: 0;}
-  5% {top: 20px;}
+  /*5% {top: 20px;}
   10% {top: 50px;}
-  25% {top: 100px;}
-  50% {top: 150px;}
-  75% {top: 200px;}
-  90% {top: 250px;}
+  25% {top: 100px;}*/
+  /*50% {top: 150px;}*/
+  /*75% {top: 200px;}
+  90% {top: 250px;}*/
   100% {top: 350px;}
 }
 .catcher {
@@ -67,6 +67,15 @@ h2 {
   height: 300px;
   width: 500px;
   top: -500px;
+  right: 100px;
+  background-color: white;
+  border: 2px solid black;
+}
+.winMessage2 {
+  position: absolute;
+  height: 300px;
+  width: 500px;
+  top: 200px;
   right: 100px;
   background-color: white;
   border: 2px solid black;
