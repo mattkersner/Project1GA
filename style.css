@@ -35,21 +35,15 @@ h2 {
   background-size: cover;
   background-position: center;
   position: absolute;
-  animation: fall 3s infinite;
+  /*animation: fall 3s infinite;*/
   transition: all linear;
   left: 50px;
 }
 @keyframes fall {
   0% {top: 0;}
-  /*5% {top: 20px;}
-  10% {top: 50px;}
-  25% {top: 100px;}*/
-  /*50% {top: 150px;}*/
-  /*75% {top: 200px;}
-  90% {top: 250px;}*/
   100% {top: 350px;}
 }
-.catcher {
+#cartman {
   height: 80px;
   width: 80px;
   background-image: url("images/cartman.png");
@@ -59,9 +53,6 @@ h2 {
   bottom: 10px;
   left: 10px;
 }
-.catcher .move {
-  right: 100px;
-}
 .winMessage {
   position: absolute;
   height: 300px;
@@ -70,15 +61,10 @@ h2 {
   right: 100px;
   background-color: white;
   border: 2px solid black;
-}
-.winMessage2 {
-  position: absolute;
-  height: 300px;
-  width: 500px;
-  top: 200px;
-  right: 100px;
-  background-color: white;
-  border: 2px solid black;
+  text-align: center;
+  font-family: southpark;
+  font-size: 3em;
+  line-height: 300px;
 }
 .audio {
   display: none;

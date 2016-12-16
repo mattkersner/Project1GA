@@ -1,31 +1,13 @@
-
-// working but choppy and slow
-// $(document).keydown(function(e) {
-//   switch(e.which) {
-//     case 37:
-//       $('.catcher').stop().animate( {
-//         left: '-=30px'
-//     });
-//     break;
-//     case 39:
-//       $('.catcher').stop().animate( {
-//         left: '+=30px'
-//     });
-//     break;
-//   }
-// });
-
 $(window).ready( function() {
   $('#yes-audio').trigger('play');
 })
-// .catcher top is always at 410
 
 // set gameboard to a variable
-let pane = $('.gameboard');
+let gameboard = $('.gameboard');
 // set cartman to a variable
-let box = $('.catcher');
+let cartman = $('#cartman');
 // establish limits that cartman can travel within the gameboard
-let limits = pane.width() - box.width();
+let limits = gameboard.width() - cartman.width();
 // store each keystroke
 let keyPress = {};
 // distance cartman will travel at each keypress
@@ -64,7 +46,7 @@ $(window).keyup(function(e) {
 
 // an interval set to look every 20 miliseconds for a new x-coordinate and set it to cartmans left css property
 setInterval(function() {
-    box.css({
+    cartman.css({
         left: function coordinates(y, value) {
           return newValue(value, 37, 39);
         },

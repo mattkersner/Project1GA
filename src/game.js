@@ -1,12 +1,8 @@
-let cheesyPoofs = $('.item');
-// window.setInterval(function () {
-//   let cheesyPoofs = $('.item');
-// }, 100);
-let cartman = $('#catcher');
 let counter = 0;
+let inProgress = true;
 
 // collission detection
-function collision(cheesyPoofs, cartman) {
+function checkForCollision(cheesyPoofs, cartman) {
   // define full dimensions of cheesypoofs
   let x1 = $(cheesyPoofs).offset().left;
   let y1 = $(cheesyPoofs).offset().top;
@@ -24,61 +20,74 @@ function collision(cheesyPoofs, cartman) {
   // all measurements of when cartman and cheesypoofs are not colliding, return false
   if (top1 < y2 || y1 > top2 || box1 < x2 || x1 > box2) {
     return false;
-  } else { // collision
+  } else {
     console.log("COLLISION!!!")
     return true;
   }
 };
 
-//randomize a left property for the new cheesypoof css
-let randomLeft = Math.floor(Math.random() * (500 - 10 + 1)) + 10;
-
-
-//check for collision every 20 miliseconds, if collision is true, add 5 to counter and remove cheesypoofs
-window.setInterval(function() {
-  if (collision(cheesyPoofs, cartman) === true) {
-    counter += 5;
-    $('#counter').text(counter);
-    $(cheesyPoofs).remove();
-    let item = new Item(item);
-    item.new();
-    // $(cheesyPoofs).css({
-    // left: randomLeft,
-    // });
-  } if (counter === 50) {
-    $('.winMessage').addClass('.winMessage2');
+function newPoofs() {
+  if (inProgress === true) {
+  let item = $('<div />');
+  $(item).appendTo('.gameboard');
+  $(item).attr('class', 'item');
+  //randomize a left css property and speed of animation for cheeypoofs
+  let randomLeft = Math.floor(Math.random() * (650 - 10 + 1)) + 10;
+  let randomSpeed = Math.floor(Math.random() * (5) + 1);
+  $(item).css({
+    left: randomLeft,
+    animation: "fall " + randomSpeed + "s" + " infinite",
+    })
   }
-  // if ($(cheesyPoofs).offset().top > 450) {
-  //   counter -=5;
-  //   $('#counter').text(counter);
-  // }
+ }
+
+//create new cheesypoof every 3 seconds
+window.setInterval(function() {
+  newPoofs();
+}, 3000);
+
+//create function for missing a poof and decreasing score
+function checkMiss() {
+  let poofs = $('.item');
+  for (poof of poofs) {
+  let y1 = poofs.offset().top;
+  let cheesyHeight = poofs.outerHeight(true);
+  let top1 = y1 + cheesyHeight;
+  if (top1 > 550) {
+    counter -= 5;
+    $('#counter').text(counter);
+    poof.remove();
+    }
+  }
+}
+
+function collision() {
+  let poofs = $('.item');
+  let cartman = $('#cartman');
+  for (poof of poofs) {
+    if (checkForCollision(poof, cartman)) {
+      counter += 5;
+      $('#counter').text(counter);
+      poof.remove();
+    }
+  }
+}
+
+function checkWin() {
+  if (counter === 10) {
+    let winMessage = $('.winMessage')
+    winMessage.css({
+      top: 100,
+    })
+    inProgress = false;
+  }
+}
+
+window.setInterval(function() {
+  collision();
+  checkMiss();
+  checkWin();
+  if (counter === 50) {
+    $('.winMessage').toggleClass('.winMessage2');
+  }
 }, 20);
-
-
-
-
-
-
-
-// let gameboard = $('.gameboard');
-
-// function miss(cheesyPoofs, gameboard) {
-//   let y1 = $(cheesyPoofs).offset().top;
-//   let cheesyHeight = $(cheesyPoofs).outerHeight(true);
-//   let box = y + height;
-//   let y2 = $(gameboard).offset().top;
-//   let gameheight = $(gameboard).outerHeight(true);
-//   let box2 = y2 + gameheight;
-//   if (box < y2 || y1 > box2) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// }
-
-// window.setInterval(function() {
-//   if (miss(cheesyPoofs, gameboard) === true) {
-//     counter -= 5;
-//     $('#counter').text(counter);
-//   }
-// }, 20);
