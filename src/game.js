@@ -1,3 +1,6 @@
+let audio = new Audio('beefcake.wav');
+let hasPlayed = false;
+
 let counter = 0;
 let inProgress = true;
 
@@ -80,6 +83,16 @@ function checkWin() {
       top: 100,
     })
     inProgress = false;
+    return true;
+  }
+}
+
+function playWinSound() {
+  if (checkWin()) {
+    if (hasPlayed === false) {
+    audio.play();
+    hasPlayed = true;
+    };
   }
 }
 
@@ -87,7 +100,5 @@ window.setInterval(function() {
   collision();
   checkMiss();
   checkWin();
-  if (counter === 50) {
-    $('.winMessage').toggleClass('.winMessage2');
-  }
+  playWinSound();
 }, 20);
