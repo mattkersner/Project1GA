@@ -1,6 +1,7 @@
 let audio = new Audio('beefcake.wav');
 let hasPlayed = false;
 
+let level = 1;
 let counter = 0;
 let inProgress = true;
 
@@ -11,24 +12,25 @@ function checkForCollision(cheesyPoofs, cartman) {
   let y1 = $(cheesyPoofs).offset().top;
   let cheesyWidth = $(cheesyPoofs).outerWidth(true);
   let cheesyHeight = $(cheesyPoofs).outerHeight(true);
-  let box1 = x1 + cheesyWidth;
-  let top1 = y1 + cheesyHeight;
+  let entirePoofWidth = x1 + cheesyWidth;
+  let entirePoofHeight = y1 + cheesyHeight;
   // define full dimensions of cartman
   let x2 = $(cartman).offset().left;
   let y2 = $(cartman).offset().top;
   let cartmanWidth = $(cartman).outerWidth(true);
   let cartmanHeight = $(cartman).outerHeight(true);
-  let box2 = x2 + cartmanWidth;
-  let top2 = y2 + cartmanHeight;
+  let entireCartmanWidth = x2 + cartmanWidth;
+  let entireCartmanHeight = y2 + cartmanHeight;
   // all measurements of when cartman and cheesypoofs are not colliding, return false
-  if (top1 < y2 || y1 > top2 || box1 < x2 || x1 > box2) {
+  if (entirePoofHeight < y2 || y1 > entireCartmanHeight || entirePoofWidth < x2 || x1 > entireCartmanWidth) {
     return false;
   } else {
-    console.log("COLLISION!!!")
+    console.log("COLLISION!")
     return true;
   }
 };
 
+//function for creating newPoofs and appending them to the gameboard
 function newPoofs() {
   if (inProgress === true) {
   let item = $('<div />');
@@ -55,8 +57,8 @@ function checkMiss() {
   for (poof of poofs) {
   let y1 = poofs.offset().top;
   let cheesyHeight = poofs.outerHeight(true);
-  let top1 = y1 + cheesyHeight;
-  if (top1 > 550) {
+  let entirePoofHeight = y1 + cheesyHeight;
+  if (entirePoofHeight > 550) {
     counter -= 5;
     $('#counter').text(counter);
     poof.remove();
@@ -64,9 +66,11 @@ function checkMiss() {
   }
 }
 
+//function for action when a collision is true, and to grab all newly created cheesypoofs
 function collision() {
   let poofs = $('.item');
   let cartman = $('#cartman');
+//this is how to account for newly created cheesypoofs
   for (poof of poofs) {
     if (checkForCollision(poof, cartman)) {
       counter += 5;
@@ -76,17 +80,20 @@ function collision() {
   }
 }
 
+//check for a winner
 function checkWin() {
-  if (counter === 10) {
+  if (counter === 25) {
     let winMessage = $('.winMessage')
     winMessage.css({
       top: 100,
     })
+    //stop new cheesypoofs from being made
     inProgress = false;
     return true;
   }
 }
 
+//play the winning sound
 function playWinSound() {
   if (checkWin()) {
     if (hasPlayed === false) {
@@ -96,6 +103,7 @@ function playWinSound() {
   }
 }
 
+//running every 20ms, call functions checking for collision, a miss, a win and to play winning sound
 window.setInterval(function() {
   collision();
   checkMiss();

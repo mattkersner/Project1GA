@@ -1,3 +1,19 @@
+// experimenting with timer
+var time = setInterval(function() {
+    var timer = $('#timer').html();
+    timer = timer.split(':');
+    var minutes = timer[0];
+    var seconds = timer[1];
+    seconds -= 1;
+    if (minutes < 0) return;
+    if (minutes < 10 && length.minutes != 2) minutes = minutes;
+    if (seconds < 0 && minutes != 0) {
+        minutes -= 1;
+        seconds = 59;
+    } else if (seconds < 10 && length.seconds != 2) seconds = "0" + seconds;
+        $('#timer').html(minutes + ':' + seconds);
+}, 1000);
+
 $(window).ready( function() {
   $('#yes-audio').trigger('play');
 })
@@ -8,7 +24,7 @@ let gameboard = $('.gameboard');
 let cartman = $('#cartman');
 // establish limits that cartman can travel within the gameboard
 let limits = gameboard.width() - cartman.width();
-// store each keystroke
+// store each keystroke as an object
 let keyPress = {};
 // distance cartman will travel at each keypress
 let x = 4;
@@ -44,8 +60,41 @@ $(window).keyup(function(e) {
   keyPress[e.which] = false;
 });
 
+// easter egg
+function easterEgg() {
+  if (keyPress[38] && keyPress[40]) {
+    cartman.css('background-image','url(images/beefcake.png)');
+    cartman.css('height', 100 + 'px');
+    cartman.css('width', 100 + 'px');
+    cartman.css('bottom', 2 + 'px');
+  }
+}
+
+// easter egg 2
+function butters() {
+  if (keyPress[32]) {
+    cartman.css('background-image','url(images/butters.png)');
+    cartman.css('height', 100 + 'px');
+    cartman.css('width', 100 + 'px');
+    cartman.css('bottom', 10 + 'px');
+  }
+}
+
+// revert back to cartman
+function bringCartmanBack() {
+  if (keyPress[67]) {
+    cartman.css('background-image','url(images/cartman.png)');
+    cartman.css('height', 80 + 'px');
+    cartman.css('width', 80 + 'px');
+    cartman.css('bottom', 10 + 'px');
+  }
+}
+
 // an interval set to look every 20 miliseconds for a new x-coordinate and set it to cartmans left css property
 setInterval(function() {
+  easterEgg();
+  butters();
+  bringCartmanBack();
     cartman.css({
         left: function coordinates(y, value) {
           return newValue(value, 37, 39);

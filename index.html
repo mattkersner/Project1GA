@@ -11,14 +11,29 @@
   <source src="cheesypoofs.mp3" type="audio/mp3">
 </audio>
 
-
 <h1>Yea, I want cheesy poofs!</h1>
 <h2>An Eric Cartman Adventure</h2>
 <div class="gameboard">
-  <h3 class="score">Score:</h3>
-  <div id="counter">0</div>
+  <!-- <h3 class="score">SCORE:</h3> -->
+  <!-- <div id="counter"></div> -->
   <div id="cartman"></div>
   <div class="winMessage">Congratulations!</div>
+</div>
+
+
+<div id="instructions">
+<p>Press left and right arrow keys to move</p>
+<p>Catch the cheesy poofs!</p>
+</div>
+
+<div id="scoreboard">
+  <h3 class="score">SCORE:</h3>
+  <p id="counter"></p>
+</div>
+
+<div id="clock">
+  <h2 id="level">Level One</h2>
+  <h4 id="timer">1:00</h3>
 </div>
 
 <audio class="audio" id="win-audio" controls preload="none">
@@ -26,8 +41,10 @@
 </audio>
 
 <script src="src/jquery-3.1.1.min.js"></script>
+<script src="src/snowfall.jquery.js"></script>
+<script>$(document).snowfall();</script>
 <script src="src/app.js"></script>
-<script src= "src/game.js"></script>
+<script src= "src/class.js"></script>
 </body>
 
 </html>
