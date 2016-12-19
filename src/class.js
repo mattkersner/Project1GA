@@ -180,20 +180,20 @@ $('#start').on('click', function() {
 // experimenting with timer, pulled from stack overflow and adjusted to my needs. Created a clearInterval
 // to work with the level ending/win. Couldn't get it to work perfectly with the clearinterval in the class
 // $('#start').on('click', function() {
-//   let time = setInterval(function() {
-//     let timer = $('#timer').html();
-//     timer = timer.split(':');
-//     let minutes = timer[0];
-//     let seconds = timer[1];
-//     seconds -= 1;
-//     if (minutes < 0) return;
-//     if (minutes < 10 && length.minutes != 2) minutes = minutes;
-//     if (seconds < 0 && minutes != 0) {
-//         minutes -= 1;
-//         seconds = 59;
-//     } else if (seconds < 10 && length.seconds != 2) seconds = "0" + seconds;
-//         $('#timer').html(minutes + ':' + seconds);
-// }, 1000);
+  let time = setInterval(function() {
+    let timer = $('#timer').html();
+    timer = timer.split(':');
+    let minutes = timer[0];
+    let seconds = timer[1];
+    seconds -= 1;
+    if (minutes < 0) return;
+    if (minutes < 10 && length.minutes != 2) minutes = minutes;
+    if (seconds < 0 && minutes != 0) {
+        minutes -= 1;
+        seconds = 59;
+    } else if (seconds < 10 && length.seconds != 2) seconds = "0" + seconds;
+        $('#timer').html(minutes + ':' + seconds);
+}, 1000);
 
 // levelAdvance() {
   //   if (game.checkWin()) {
