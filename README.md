@@ -5,7 +5,9 @@ This is a twist on a classic "catch em all" game, using a couple of my favorite 
 
 I've been watching South Park since I was 13 years old. The show has evolved from a silly comedy into hilarious and cutting social commentary. The shows creators, Trey Parker and Matt Stone, are people I regard as geniuses. This is an homage.
 
-###[Play the Game]() 
+Find the easter eggs and play as different characters!
+
+###[Play the Game](http://actuary-frog-62264.bitballoon.com/) 
 
 
 ##Technologies Used
