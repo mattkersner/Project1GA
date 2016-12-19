@@ -1,23 +1,3 @@
-// experimenting with timer
-var time = setInterval(function() {
-    var timer = $('#timer').html();
-    timer = timer.split(':');
-    var minutes = timer[0];
-    var seconds = timer[1];
-    seconds -= 1;
-    if (minutes < 0) return;
-    if (minutes < 10 && length.minutes != 2) minutes = minutes;
-    if (seconds < 0 && minutes != 0) {
-        minutes -= 1;
-        seconds = 59;
-    } else if (seconds < 10 && length.seconds != 2) seconds = "0" + seconds;
-        $('#timer').html(minutes + ':' + seconds);
-}, 1000);
-
-$(window).ready( function() {
-  $('#yes-audio').trigger('play');
-})
-
 // set gameboard to a variable
 let gameboard = $('.gameboard');
 // set cartman to a variable

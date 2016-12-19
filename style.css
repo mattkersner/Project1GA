@@ -20,6 +20,7 @@ body {
 h1 {
   text-align: center;
   font-family: southpark;
+  font-size: 35px;
 }
 h2 {
   text-align: center;
@@ -136,4 +137,17 @@ h2 {
 #timer {
   text-align: center;
   margin-top: -16px;
+}
+#start {
+  position: absolute;
+  left: 44%;
+  top: 85%;
+  text-align: center;
+  height: 40px;
+  width: 150px;
+  background-color: lightgrey;
+  border-radius: 10%;
+  font-family: southpark;
+  font-size: 20px;
+  padding-top: 8px;
 }

@@ -145,15 +145,8 @@ class Game {
       }
     }
   }
-  levelAdvance() {
-    if (game.checkWin()) {
-      game.level = 2;
-      $('#level').html('Level Two');
-      game.inProgress = true;
-    }
-  }
   stopTimer() {
-    if (checkWin()) {
+    if (game.checkWin()) {
       clearInterval(time);
     }
   }
@@ -161,23 +154,50 @@ class Game {
 
 let game = new Game;
 
-//create new cheesypoof every 3 seconds
-window.setInterval(function() {
-  game.newPoofs();
-}, 3000);
+$('#start').on('click', function() {
+  $('#yes-audio').trigger('play');
+  //create new cheesypoof every 3 seconds
+  setInterval(function() {
+    game.newPoofs();
+  }, 3000);
+  //special drop every 15 seconds
+  setInterval(function() {
+    game.specialDrop();
+  }, 15000);
+  //call functions checking for collision, a miss, a win and to play winning sound
+  setInterval(function() {
+    game.collision();
+    game.checkMiss();
+    game.checkWin();
+    game.playWinSound();
+    game.specialCollision();
+    game.specialMiss();
+    game.stopTimer();
+  // game.levelAdvance();
+  }, 20);
+})
 
-//special drop
-window.setInterval(function() {
-  game.specialDrop();
-}, 15000);
+// experimenting with timer, pulled from stack overflow and adjusted to my needs. Created a clearInterval
+// to work with the level ending/win. Couldn't get it to work perfectly with the clearinterval in the class
+// $('#start').on('click', function() {
+//   let time = setInterval(function() {
+//     let timer = $('#timer').html();
+//     timer = timer.split(':');
+//     let minutes = timer[0];
+//     let seconds = timer[1];
+//     seconds -= 1;
+//     if (minutes < 0) return;
+//     if (minutes < 10 && length.minutes != 2) minutes = minutes;
+//     if (seconds < 0 && minutes != 0) {
+//         minutes -= 1;
+//         seconds = 59;
+//     } else if (seconds < 10 && length.seconds != 2) seconds = "0" + seconds;
+//         $('#timer').html(minutes + ':' + seconds);
+// }, 1000);
 
-//running every 20ms, call functions checking for collision, a miss, a win and to play winning sound
-window.setInterval(function() {
-  game.collision();
-  game.checkMiss();
-  game.checkWin();
-  game.playWinSound();
-  game.specialCollision();
-  game.specialMiss();
-  game.stopTimer();
-}, 20);
+// levelAdvance() {
+  //   if (game.checkWin()) {
+  //     game.level = 2;
+  //     $('#level').html('Level Two');
+  //   }
+  // }
