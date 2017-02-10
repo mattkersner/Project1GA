@@ -13,30 +13,36 @@ body {
   margin: 0 auto;
   top: 5px;
 }
+
 @font-face {
   font-family: southpark;
   src: url("southpark.ttf");
 }
+
 h1 {
   text-align: center;
   font-family: southpark;
   font-size: 35px;
 }
+
 h2 {
   text-align: center;
   font-family: southpark;
 }
+
 .score {
   position: absolute;
   top: 0;
   right: 25px;
 }
+
 #counter {
   position: absolute;
   top: 0;
   right: 11px;
   font-size: 33px;
 }
+
 .item {
   height: 90px;
   width: 50px;
@@ -46,10 +52,12 @@ h2 {
   position: absolute;
   transition: all linear;
 }
+
 @keyframes fall {
   0% {top: 0;}
   100% {top: 350px;}
 }
+
 #cartman {
   height: 80px;
   width: 80px;
@@ -60,6 +68,7 @@ h2 {
   bottom: 10px;
   left: 10px;
 }
+
 .winMessage {
   position: absolute;
   height: 250px;
@@ -75,9 +84,11 @@ h2 {
   transition: all 2s linear;
   border-radius: 10%;
 }
+
 .audio {
   display: none;
 }
+
 #instructions {
   position: absolute;
   top: 18%;
@@ -91,6 +102,7 @@ h2 {
   font-family: southpark;
   font-size: 20px;
 }
+
 .mrhankey {
   background-image: url("images/mrhankey.png");
   background-size: cover;
@@ -100,6 +112,7 @@ h2 {
   width: 50px;
   transition: all linear;
 }
+
 #scoreboard {
   position: absolute;
   top: 33%;
@@ -113,9 +126,11 @@ h2 {
   font-family: southpark;
   font-size: 30px;
 }
+
 .score {
   padding-right: 38px;
 }
+
 #clock {
   position: absolute;
   top: 18%;
@@ -129,15 +144,18 @@ h2 {
   font-family: southpark;
   font-size: 30px;
 }
+
 #level {
   font-family: southpark;
   text-align: center;
   font-size: 28px;
 }
+
 #timer {
   text-align: center;
   margin-top: -16px;
 }
+
 #start {
   position: absolute;
   left: 43%;

@@ -62,6 +62,9 @@ class Game {
       }
     }
   }
+  startGame() {
+    this.inProgress = true;
+  }
   //function for action when a collision is true, and to grab all newly created cheesypoofs
   collision() {
     this.poofs = $('.item');
@@ -74,6 +77,12 @@ class Game {
         this.poof.remove();
       }
     }
+  }
+  sendWinMessageBack() {
+    this.winMessage = $('.winMessage');
+    this.winMessage.css({
+      top: -500,
+    });
   }
   //check for a winner
   checkWin() {
@@ -166,6 +175,11 @@ class Game {
   stopTimer() {
     if (game.checkWin()) {
       clearInterval(this.time);
+      this.level = 2;
+      this.levelHTML = $('#level');
+      this.levelHTML.html('Level Two');
+      this.timerReset = $('timer');
+      this.timerReset.html('1:00');
     }
   }
 }
@@ -174,6 +188,8 @@ let game = new Game;
 
 $('#start').on('click', function() {
   $('#yes-audio').trigger('play');
+  game.sendWinMessageBack();
+  game.startGame();
   //create new cheesypoof every 3 seconds
   setInterval(function() {
     game.newPoofs();
