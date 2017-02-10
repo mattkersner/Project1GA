@@ -127,10 +127,6 @@ h2 {
   font-size: 30px;
 }
 
-.score {
-  padding-right: 38px;
-}
-
 #clock {
   position: absolute;
   top: 18%;
@@ -143,6 +139,62 @@ h2 {
   border-radius: 10%;
   font-family: southpark;
   font-size: 30px;
+}
+
+@media only screen and (max-width: 1130px) {
+  #scoreboard {
+    position: absolute;
+    top: 650px;
+    right: 7px;
+  }
+  #clock {
+    position: absolute;
+    top: 650px;
+    right: 230px;
+  }
+  #instructions {
+    position: absolute;
+    top: 650px;
+    height: 100px;
+    width: 300px;
+    line-height: 18px;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  #scoreboard {
+    position: absolute;
+    top: 650px;
+    right: 7px;
+  }
+  #clock {
+    position: absolute;
+    top: 650px;
+    left: 7px;
+  }
+  #instructions {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #scoreboard {
+    position: absolute;
+    top: 750px;
+    right: 7px;
+  }
+  #clock {
+    position: absolute;
+    top: 750px;
+    left: 40px;
+  }
+  #instructions {
+    display: none;
+  }
+}
+
+.score {
+  padding-right: 38px;
 }
 
 #level {

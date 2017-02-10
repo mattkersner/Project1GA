@@ -103,6 +103,7 @@ class Game {
           top: 100,
           })
           this.inProgress = false;
+          this.level = 3;
           return true;
         }
     }
@@ -178,7 +179,7 @@ class Game {
       this.level = 2;
       this.levelHTML = $('#level');
       this.levelHTML.html('Level Two');
-      this.timerReset = $('timer');
+      this.timerReset = $('#timer');
       this.timerReset.html('1:00');
     }
   }
