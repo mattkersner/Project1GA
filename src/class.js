@@ -177,6 +177,7 @@ class Game {
       clearInterval(this.time);
       this.level = 2;
       this.counter = 0;
+      this.hasPlayed = false;
       this.levelHTML = $('#level');
       this.levelHTML.html('Level Two');
       this.timerReset = $('#timer');
