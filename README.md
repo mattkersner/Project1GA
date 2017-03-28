@@ -7,10 +7,10 @@ I've been watching South Park since I was 13 years old. The show has evolved fro
 
 Find the easter eggs and play as different characters!
 
-###[Play the Game](http://actuary-frog-62264.bitballoon.com/) 
+### [Play the Game](http://actuary-frog-62264.bitballoon.com/) 
 
 
-##Technologies Used
+## Technologies Used
 - HTML
 - CSS
 - Javascript Classes
@@ -43,11 +43,11 @@ Find the easter eggs and play as different characters!
   };
 ```
 
-###Build Strategy
+### Build Strategy
 I started simple and built the gameboard and falling objects first. Then I created a div and added the keyboard functionality to it. Then I figured out the collision logic (which had me scratching my head for a long time). Once I had those things down, it was just a matter of adding the bells and whistles and making it my own. 
 
-###Complications/Future Improvements
+### Complications/Future Improvements
 I would like to add additional levels. Right now there's only one. Also, I need to correct the timer. I have it working well, but couldn't get it synced with the start button click event the way I wanted, so I would like to fix that. Have plenty of ideas for this game in the future and I hope to build on it extensively. 
 
-####Authors
+#### Authors
 Matt Kersner
