@@ -11,22 +11,22 @@ class Game {
   }
   // collission detection
   checkForCollision(cheesyPoofs, cartman) {
-  // define full dimensions of cheesypoofs
-    this.x1 = $(cheesyPoofs).offset().left;
-    this.y1 = $(cheesyPoofs).offset().top;
-    this.cheesyWidth = $(cheesyPoofs).outerWidth(true);
-    this.cheesyHeight = $(cheesyPoofs).outerHeight(true);
-    this.entirePoofWidth = this.x1 + this.cheesyWidth;
-    this.entirePoofHeight = this.y1 + this.cheesyHeight;
-  // define full dimensions of cartman
-    this.x2 = $(cartman).offset().left;
-    this.y2 = $(cartman).offset().top;
-    this.cartmanWidth = $(cartman).outerWidth(true);
-    this.cartmanHeight = $(cartman).outerHeight(true);
-    this.entireCartmanWidth = this.x2 + this.cartmanWidth;
-    this.entireCartmanHeight = this.y2 + this.cartmanHeight;
+  // define full dimensions of cheesypoofs and x and y coordinates
+    let x1 = $(cheesyPoofs).offset().left;
+    let y1 = $(cheesyPoofs).offset().top;
+    let cheesyWidth = $(cheesyPoofs).outerWidth(true);
+    let cheesyHeight = $(cheesyPoofs).outerHeight(true);
+    let entirePoofWidth = x1 + cheesyWidth;
+    let entirePoofHeight = y1 + cheesyHeight;
+  // define full dimensions of cartman and x and y coordinates
+    let x2 = $(cartman).offset().left;
+    let y2 = $(cartman).offset().top;
+    let cartmanWidth = $(cartman).outerWidth(true);
+    let cartmanHeight = $(cartman).outerHeight(true);
+    let entireCartmanWidth = x2 + cartmanWidth;
+    let entireCartmanHeight = y2 + cartmanHeight;
   // all measurements of when cartman and cheesypoofs are not colliding, return false
-    if (this.entirePoofHeight < this.y2 || this.y1 > this.entireCartmanHeight || this.entirePoofWidth < this.x2 || this.x1 > this.entireCartmanWidth) {
+    if (entirePoofHeight < y2 || y1 > entireCartmanHeight || entirePoofWidth < x2 || x1 > entireCartmanWidth) {
       return false;
     } else {
       console.log("COLLISION!")
@@ -36,29 +36,29 @@ class Game {
   //function for creating newPoofs and appending them to the gameboard
   newPoofs() {
     if (this.inProgress === true) {
-      this.item = $('<div />');
-      $(this.item).appendTo('.gameboard');
-      $(this.item).attr('class', 'item');
+      let item = $('<div />');
+      $(item).appendTo('.gameboard');
+      $(item).attr('class', 'item');
   //randomize a left css property and speed of animation for cheeypoofs
-      this.randomLeft = Math.floor(Math.random() * (650 - 10 + 1)) + 10;
-      this.randomSpeed = Math.floor(Math.random() * (5) + 1);
-      $(this.item).css({
-        left: this.randomLeft,
-        animation: "fall " + this.randomSpeed + "s" + " infinite",
+      let randomLeft = Math.floor(Math.random() * (650 - 10 + 1)) + 10;
+      let randomSpeed = Math.floor(Math.random() * (5) + 1);
+      $(item).css({
+        left: randomLeft,
+        animation: "fall " + randomSpeed + "s" + " infinite",
       })
     }
   }
   //create function for missing a poof and decreasing score
   checkMiss() {
-    this.poofs = $('.item');
-    for (this.poof of this.poofs) {
-      this.y1 = this.poofs.offset().top;
-      this.cheesyHeight = this.poofs.outerHeight(true);
-      this.entirePoofHeight = this.y1 + this.cheesyHeight;
-      if (this.entirePoofHeight > 550) {
+    let poofs = $('.item');
+    for (let poof of poofs) {
+      let y1 = poofs.offset().top;
+      let cheesyHeight = poofs.outerHeight(true);
+      let entirePoofHeight = y1 + cheesyHeight;
+      if (entirePoofHeight > 550) {
         this.counter -= 5;
         $('#counter').text(this.counter);
-        this.poof.remove();
+        poof.remove();
       }
     }
   }
@@ -67,20 +67,20 @@ class Game {
   }
   //function for action when a collision is true, and to grab all newly created cheesypoofs
   collision() {
-    this.poofs = $('.item');
-    this.cartman = $('#cartman');
+    let poofs = $('.item');
+    let cartman = $('#cartman');
   //this is how to account for newly created cheesypoofs
-    for (this.poof of this.poofs) {
-      if (this.checkForCollision(this.poof, cartman)) {
+    for (let poof of poofs) {
+      if (this.checkForCollision(poof, cartman)) {
         this.counter += 5;
         $('#counter').text(this.counter);
-        this.poof.remove();
+        poof.remove();
       }
     }
   }
   sendWinMessageBack() {
-    this.winMessage = $('.winMessage');
-    this.winMessage.css({
+    let winMessage = $('.winMessage');
+    winMessage.css({
       top: -500,
     });
   }
@@ -88,8 +88,8 @@ class Game {
   checkWin() {
     if (this.level === 1) {
       if (this.counter >= 25) {
-        this.winMessage = $('.winMessage');
-        this.winMessage.css({
+        let winMessage = $('.winMessage');
+        winMessage.css({
           top: 100,
         })
       //stop new cheesypoofs from being made
@@ -98,9 +98,9 @@ class Game {
       }
     } if (this.level === 2) {
         if (this.counter >= 50) {
-          this.winMessage = $('.winMessage');
-          this.winMessage.css({
-          top: 100,
+          let winMessage = $('.winMessage');
+          winMessage.css({
+            top: 100,
           })
           this.inProgress = false;
           return true;
@@ -119,14 +119,14 @@ class Game {
   //mr hankey drop
   specialDrop() {
     if (this.inProgress === true) {
-      this.mrhankey = $('<div />');
-      $(this.mrhankey).appendTo('.gameboard');
-      $(this.mrhankey).attr('class', 'mrhankey');
-      this.randomLeft = Math.floor(Math.random() * (650 - 10 + 1)) + 10;
-      this.randomSpeed = Math.floor(Math.random() * (5) + 1);
-      $(this.mrhankey).css({
-        left: this.randomLeft,
-        animation: "fall " + this.randomSpeed + "s" + " infinite",
+      let mrhankey = $('<div />');
+      $(mrhankey).appendTo('.gameboard');
+      $(mrhankey).attr('class', 'mrhankey');
+      let randomLeft = Math.floor(Math.random() * (650 - 10 + 1)) + 10;
+      let randomSpeed = Math.floor(Math.random() * (5) + 1);
+      $(mrhankey).css({
+        left: randomLeft,
+        animation: "fall " + randomSpeed + "s" + " infinite",
       })
     }
     if (this.has2Played === false) {
@@ -135,24 +135,24 @@ class Game {
     }
   }
   specialCollision() {
-      this.hankey = $('.mrhankey');
-      this.cartman = $('#cartman');
-      for (this.special of this.hankey) {
-        if (this.checkForCollision(this.special, cartman)) {
+      let hankey = $('.mrhankey');
+      let cartman = $('#cartman');
+      for (let special of hankey) {
+        if (this.checkForCollision(special, cartman)) {
           this.counter += 10;
           $('#counter').text(this.counter);
-          this.special.remove();
+          special.remove();
         }
       }
   }
   specialMiss() {
-    this.hankey = $('.mrhankey');
-    for (this.special of this.hankey) {
-      this.y1 = this.hankey.offset().top;
-      this.hankeyHeight = this.hankey.outerHeight(true);
-      this.entireHankeyHeight = this.y1 + this.hankeyHeight;
-      if (this.entireHankeyHeight > 550) {
-        this.special.remove();
+    let hankey = $('.mrhankey');
+    for (let special of hankey) {
+      let y1 = hankey.offset().top;
+      let hankeyHeight = hankey.outerHeight(true);
+      let entireHankeyHeight = y1 + hankeyHeight;
+      if (entireHankeyHeight > 550) {
+        special.remove();
       }
     }
   }
@@ -177,10 +177,10 @@ class Game {
       clearInterval(this.time);
       this.level = 2;
       this.counter = 0;
-      this.levelHTML = $('#level');
-      this.levelHTML.html('Level Two');
-      this.timerReset = $('#timer');
-      this.timerReset.html('1:00');
+      let levelHTML = $('#level');
+      levelHTML.html('Level Two');
+      let timerReset = $('#timer');
+      timerReset.html('1:00');
     }
   }
 }
